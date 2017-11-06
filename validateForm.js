@@ -44,7 +44,7 @@ function validateForm(arr) {
         phoneNum.substring(3,4) !== '-' ||
         isDigit(phoneNum.substring(4,7)) === false ||
         phoneNum.substring(7,8) !== '-' ||
-            isDigit(phoneNum.substring(8,12)) === false) {
+        isDigit(phoneNum.substring(8,12)) === false) {
         invalidMessages += "Invalid Phone Number XXX-XXX-XXXX\n";
     }
 
