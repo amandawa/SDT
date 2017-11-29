@@ -12,21 +12,22 @@
 <body>
 
 <div class="jumbotron text-center">
-    <h1>Single Terminator</h1>
-    <p>Say GoodBye To Single Life</p>
-    <img src="img/dog.jpeg" class="img-circle" alt="logo" style="width:10em; height: 10em;">
+    <h1>UMD CONNECT</h1>
+    <br>
+    <img src="img/umd_logo.png" class="logo" alt="logo">
+    <br><br>
 </div>
 
 
 <div class="container">
-    <form>
+    <form action="loginProcess.php" method="get">
         <div class="form-group">
-            <label for="usr">User Name:</label>
-            <input type="text" class="form-control" id="usr" required>
+            <label for="usr">UID:</label>
+            <input type="text" class="form-control" name="usr" id="usr" required>
         </div>
         <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd" required>
+            <input type="password" class="form-control" name="pwd" id="pwd" required>
         </div>
         <div class="button-group">
             <input type="button" class="btn btn-info" value="New User" style="width:8em; ">
