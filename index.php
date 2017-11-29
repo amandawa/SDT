@@ -33,6 +33,10 @@
             <input type="submit" class="btn btn-info" value="Login" style="width:8em;">
         </div>
     </form>
+    <br>
+    <form action = "./preferences/Preferences.php" method = "post">
+    <input type="submit" class="btn btn-info" value="Go To Preferences (For testing)" style="width:15em;">
+    </form>
 </div>
 </body>
 </html>
