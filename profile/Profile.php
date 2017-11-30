@@ -71,7 +71,7 @@
 <div class = "container-fluid">
 <div class="row">
   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id = "first_col">
-      <img class="img-circle" id = "profile_pic" src="profilepic.png" height ='200' width ='200' alt="default_prof_pic.png"/>
+      <img class="img-circle" id = "profile_pic" src="./images/profilepic.png" height ='200' width ='200' alt="Profile Picture"/>
       <br><br>
       <hr align = "left" width = "80%" >
       <h4>Contact Info:</h4>

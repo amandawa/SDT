@@ -109,7 +109,7 @@
     <div class = "container-fluid">
         <div class="row">
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id = "first_col">
-                <img class="img-circle" id = "profile_pic" src="default_prof_pic.png" height ='200' width ='200'/>
+                <img class="img-circle" id = "profile_pic" src="images/profilepic.png" height ='200' width ='200'/>
                 <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post" enctype="multipart/form-data"><br>
                     Select image to upload:
                     <input type="file" name="filename" id="fileToUpload"><br>
