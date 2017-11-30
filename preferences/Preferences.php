@@ -24,7 +24,7 @@
         <div class="container-fluid">    
             <!-- Navigation Part 1-->
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">UMDConnect</a>
+                <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-heart"></span> UMDConnect</a>
                     
                 <!-- button visible when navbar collapses -->
                 <button type="button" class="navbar-toggle collapsed"
@@ -41,8 +41,7 @@
             <!-- Navigation Part 2 has main content of navigation bar -->
             <div id="navbarcontent" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#"><span class="glyphicon glyphicon-home"</span></a></li>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="../profile/Profile.php">My Profile</a></li>
                     <li><a href="#">Preferences</a></li>
                     <li><a href="#">Matches</a></li>
                         

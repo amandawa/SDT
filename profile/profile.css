@@ -1,0 +1,10 @@
+/* #first_col {
+    background-color: red;
+} */
+hr {
+    border-top: 1px solid #ccc;
+}
+
+label {
+    color: gray;
+}
