@@ -1,0 +1,43 @@
+#good {
+    color: rgb(8, 250, 8);
+    text-align: center;
+    font-size: 16pt;
+}
+
+#bad {
+    color: red;
+    text-align: center;
+    font-size: 16pt;
+}
+
+img.img-circle {
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+    display: block;
+}
+
+.col-sm-5 {
+    margin-bottom: 5%;
+}
+
+.row.display-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .thumbnail {
+    height: 100%;
+  }
+  
+  /* extra positioning */
+  .thumbnail {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .thumbnail .caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }

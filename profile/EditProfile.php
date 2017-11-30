@@ -81,7 +81,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="./Profile.php">My Profile</a></li>
                     <li><a href="../preferences/Preferences.php">Preferences</a></li>
-                    <li><a href="#">Matches</a></li>
+                    <li><a href="../match/Match.php">Matches</a></li>
                         
                     <!-- dropdown for projects -->
                     <li class="dropdown">
@@ -138,6 +138,10 @@
                     <div class="form-group">
                         <label for="pwd">Password:</label>
                         <input type="password" class="form-control" id="pwd">
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="text" class="form-control" id="age">
                     </div>
                     <div class="form-group">
                         <label for="gender">Gender:</label>

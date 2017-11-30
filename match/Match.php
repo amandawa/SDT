@@ -17,7 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/css/bootstrap-slider.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js"></script>
-    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="match.css" />
 </head>
 <body>
     <nav class="navbar navbar-default navbar-fixed-top">
@@ -41,9 +41,9 @@
             <!-- Navigation Part 2 has main content of navigation bar -->
             <div id="navbarcontent" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">My Profile</a></li>
+                    <li><a href="../profile/Profile.php">My Profile</a></li>
                     <li><a href="../preferences/Preferences.php">Preferences</a></li>
-                    <li><a href="../match/Match.php">Matches</a></li>
+                    <li><a href="#">Matches</a></li>
                         
                     <!-- dropdown for projects -->
                     <li class="dropdown">
@@ -65,63 +65,56 @@
     </nav>
 
 <div style="background:#FFFACD !important" class="jumbotron text-center">
-    <h1>My Profile</h1>
+    <h1>My Matches</h1>
 </div>
 
-<div class = "container-fluid">
-<div class="row">
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id = "first_col">
-      <img class="img-circle" id = "profile_pic" src="./images/profilepic.png" height ='200' width ='200' alt="Profile Picture"/>
-      <br><br>
-      <hr align = "left" width = "80%" >
-      <h4>Contact Info:</h4>
-      <label>Email:</label><br><br>
-      <label>Phone Number:</label>
-  </div>
+<div class="container">
+    <div class="row display-flex">
+        
+        <div class="col-sm-5 col-md-3">
+            <div class="thumbnail">
+                <img class = "img-circle" src="rick.png"  alt="Profile Picture">
+                    <div class="caption">
+                        <h3>Rick Sanchez</h3>
+                        <span><strong id = "good">99% match</strong></span>
+                        <p>  
+                            <label>Age: </label> 60<br>
+                            <label>Major: </label> Biophysics <br>
+                            <label>Interests:</label>
+                            <pre>
+- Turning into a pickle
+- Drinking
+- Space travel
+                            </pre>
+                        </p>
+                    <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Message</a></p>
+                </div>
+            </div>
+        </div>
 
-
-  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id = "second_col">
-    <h2>Amanda Wang</h2>
-    <hr>
-    <h4>Basic Info:</h4>
-    <label>UID:</label><br><br>
-    <label>Age:</label><br><br>
-    <label>Gender:</label><br><br>
-    <label>Major:</label><br><br>
-    <label>Birthday:</label><br><br>
-    <label>Ethnicity:</label><br><br>
-    <label>Interests:</label><br><br>
-
-  </div>
-</div>
-</div>
-
-
-<div class="button-group" id = "buttonContainer">
-            <input type="submit" class="btn btn-info" value="Edit Profile" 
-            style="width:70%;
-                height: 40px;
-                position:fixed;
-                bottom:0px;
-                text-align:center;
-                left: 15%;
-                font-size:16pt;
-            ">
+        <div class="col-sm-5 col-md-3">
+            <div class="thumbnail">
+                <img class = "img-circle" src="morty.png"  alt="Profile Picture">
+                    <div class="caption">
+                        <h3>Morty Smith</h3>
+                        <span><strong id = "bad">9% match</strong></span>
+                        <p>
+                            <label>Age: </label> 14<br>
+                            <label>Major: </label> Communications <br>
+                            <label>Interests:</label>
+                            <pre>
+- Going on adventures
+- Hanging with my grandpa
+                            </pre>
+                        </p>
+                    <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Message</a></p>
+                </div>
+            </div>
         </div>
 
 
-<script>
-    $(document).ready(mainProcessing);
-              
-    function mainProcessing() {
-        let edit_profile = document.getElementById("buttonContainer").onclick = function () {
-            window.location.href = "./EditProfile.php";
-        }
-
-    }
-</script>        
-
-
+    </div>
+</div>
 
 </body>
 </html>
