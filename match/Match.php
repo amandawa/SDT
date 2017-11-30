@@ -69,8 +69,9 @@
 </div>
 
 <div class="container">
+<input type="text" name="search" placeholder="Search.."><br><br>
     <div class="row display-flex">
-        
+
         <div class="col-sm-5 col-md-3">
             <div class="thumbnail">
                 <img class = "img-circle" src="rick.png"  alt="Profile Picture">
