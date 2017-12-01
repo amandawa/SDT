@@ -17,10 +17,65 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/css/bootstrap-slider.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.7.2/bootstrap-slider.min.js"></script>
-    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="load.css" />
+    <style>
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 43%;
+  top: 50%;
+  z-index: 1;
+  width: 500px;
+  height: 500px;
+  margin: -75px 0 0 -75px;
+  border: 30px solid black;
+  border-radius: 50%;
+  border-top: 30px solid red;
+ border-right: 30px solid black;
+ border-bottom: 30px solid yellow;
+ border-left: 30px solid white;
+  width: 300px;
+  height: 300px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+</style>
 </head>
-<body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">    
             <!-- Navigation Part 1-->
             <div class="navbar-header">
@@ -41,9 +96,9 @@
             <!-- Navigation Part 2 has main content of navigation bar -->
             <div id="navbarcontent" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">My Profile</a></li>
+                    <li><a href="../profile/Profile.php">My Profile</a></li>
                     <li><a href="../preferences/Preferences.php">Preferences</a></li>
-                    <li><a href="../match/LoadMatches.php">Matches</a></li>
+                    <li><a href="#">Matches</a></li>
                         
                     <!-- dropdown for projects -->
                     <li class="dropdown">
@@ -64,64 +119,48 @@
         </div>
     </nav>
 
-<div style="background:#FFFACD !important" class="jumbotron text-center">
-    <h1>My Profile</h1>
+
+<body >
+
+<div style="background:#FFFACD !important;  margin-bottom:0px" class="jumbotron text-center">
+    <h1>Get Connected</h1>
 </div>
 
-<div class = "container-fluid">
-<div class="row">
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id = "first_col">
-      <img class="img-circle" id = "profile_pic" src="./images/profilepic.png" height ='200' width ='200' alt="Profile Picture"/>
-      <br><br>
-      <hr align = "left" width = "80%" >
-      <h4>Contact Info:</h4>
-      <label>Email:</label><br><br>
-      <label>Phone Number:</label>
-  </div>
+<div id ="myDiv" style="display:block;">
+    <div class="bg">
 
+    </div>
+    <div id = "buttons">
+        <button id = "btn" onclick="myFunction()" type="button" class="btn btn-primary btn-lg">
+           Find My Matches!
+        </button>
+        <img src="turtlelove.png" alt="Turtle Image">
+    </div>
 
-  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id = "second_col">
-    <h2>Amanda Wang</h2>
-    <hr>
-    <h4>Basic Info:</h4>
-    <label>UID:</label><br><br>
-    <label>Age:</label><br><br>
-    <label>Gender:</label><br><br>
-    <label>Major:</label><br><br>
-    <label>Birthday:</label><br><br>
-    <label>Ethnicity:</label><br><br>
-    <label>Interests:</label><br><br>
-
-  </div>
-</div>
 </div>
 
+<div id="loader" style="display:none;" class="animate-bottom"></div>
 
-<div class="button-group" id = "buttonContainer">
-            <input type="submit" class="btn btn-info" value="Edit Profile" 
-            style="width:70%;
-                height: 40px;
-                position:fixed;
-                bottom:0px;
-                text-align:center;
-                left: 15%;
-                font-size:16pt;
-            ">
-        </div>
+</body>
 
 
 <script>
-    $(document).ready(mainProcessing);
-              
-    function mainProcessing() {
-        let edit_profile = document.getElementById("buttonContainer").onclick = function () {
-            window.location.href = "./EditProfile.php";
-        }
+    var myVar;
 
+    function myFunction() {
+        showPage();
+        setTimeout(goToMatch, 4000);
     }
-</script>        
+
+    function goToMatch() {
+        document.location.href = "./Match.php";
+    }
+
+    function showPage() {
+        document.getElementById("loader").style.display = "block";
+        document.getElementById("buttons").style.display = "none";
+    }
 
 
-
-</body>
+</script>
 </html>

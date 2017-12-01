@@ -43,7 +43,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="../profile/Profile.php">My Profile</a></li>
                     <li><a href="../preferences/Preferences.php">Preferences</a></li>
-                    <li><a href="#">Matches</a></li>
+                    <li><a href="./LoadMatches.php">Matches</a></li>
                         
                     <!-- dropdown for projects -->
                     <li class="dropdown">

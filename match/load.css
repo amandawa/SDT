@@ -1,0 +1,43 @@
+body, html {
+    height: 100%;
+}
+.bg { 
+    /* The image used */
+    background-image: url("background.png");
+
+    /* Half height */
+    height: 700px; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.2;
+}
+
+#buttons {
+    vertical-align:middle;
+    text-align:center;
+    z-index: 1;
+    opacity: 1;
+    position: absolute;
+    top: 35%;
+    left: 33%;
+    height: 130px;
+    width: 270px;
+}
+
+button {
+    margin-left:8%;
+}
+
+/* .btn-default{
+    background-color:#facccd;
+} */
+     
+.btn-lg {
+    border-radius: 30px;
+    font-size:40px;
+    padding: 30px 50px;
+    /* border: 2px solid black; */
+}
