@@ -1,11 +1,15 @@
 <?php
 
 class fun_tuna{
-        
+
     // insert data into database, make sure $arr is in default order
     // if user didnt provide info, set corresponding value to null
     public function insert($arr){
-        require_once("db_Login.php");
+        $host = "localhost";
+        $user = "dbuser";
+        $password = "dating123";
+        $database = "dating_website";
+        $tablename = "userinfo";
         $signal = 5;
         $db_connection = new mysqli($host, $user, $password, $database);
         if($db_connection->connect_error){
@@ -25,7 +29,11 @@ class fun_tuna{
     // update info  $arr is just user all upadated info like insert.
     // have to provide UID
     public function update($arr){
-        require_once("db_Login.php");
+        $host = "localhost";
+        $user = "dbuser";
+        $password = "dating123";
+        $database = "dating_website";
+        $tablename = "userinfo";
         $signal = 5;
         $db_connection = new mysqli($host, $user, $password, $database);
         if($db_connection->connect_error){
@@ -62,7 +70,11 @@ class fun_tuna{
     // this image path to access file and open the image
     // example input:  array(UID => 123, gender => "M")
     public function searchImage($arr){
-        require_once("db_Login.php");
+        $host = "localhost";
+        $user = "dbuser";
+        $password = "dating123";
+        $database = "dating_website";
+        $tablename = "userinfo";
         $signal = 5;
         $db_connection = new mysqli($host, $user, $password, $database);
         if($db_connection->connect_error){
@@ -85,52 +97,56 @@ class fun_tuna{
             if($count >= 1){
                 $temp.="  AND ";
             }
-            $tuna.=$temp;   
-        }   
+            $tuna.=$temp;
+        }
         $query = "select studentID,image from $tablename where $tuna";
         $result = $db_connection->query($query);
         if(!$result){
-            die($notfound.$db_connection->error);
+            die($db_connection->error);
         }else{
             $num_rows = $result->num_rows;
             if($num_rows !== 0){
                 for ($row_index = 0; $row_index < $num_rows; $row_index++) {
-        			$result->data_seek($row_index);
-        			$row = $result->fetch_array(MYSQLI_ASSOC);
-                    $lemon[$row['studentID']] = $row['image']; 
-        		}
+                    $result->data_seek($row_index);
+                    $row = $result->fetch_array(MYSQLI_ASSOC);
+                    $lemon[$row['studentID']] = $row['image'];
+                }
             }
             $db_connection->close();
         }
         return $lemon;
     }
-	// input is uid, and return the information of that uid (array)
-	// it will follow the table default pattern
-	public function getInfo($uid){
-        require_once("db_Login.php");
+    // input is uid, and return the information of that uid (array)
+    // it will follow the table default pattern
+    public function getInfo($uid){
+        $host = "localhost";
+        $user = "dbuser";
+        $password = "dating123";
+        $database = "dating_website";
+        $tablename = "userinfo";
         $signal = 5;
         $db_connection = new mysqli($host, $user, $password, $database);
         if($db_connection->connect_error){
             die($db_connection->connect_error);
         }
-		$query = "select * from $tablename where studentID = $uid";
-		$result = $db_connection->query($query);
-		$lemon = array();
-		if(!$result){
-            die($notfound.$db_connection->error);
+        $query = "select * from $tablename where studentID = $uid";
+        $result = $db_connection->query($query);
+        $lemon = array();
+        if(!$result){
+            die($db_connection->error);
         }else{
             $num_rows = $result->num_rows;
             if($num_rows !== 0){
-        		$result->data_seek($num_rows);
-        		$row = $result->fetch_array(MYSQLI_ASSOC);
-				$lemon = $row;
+                $result->data_seek($num_rows);
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+                $lemon = $row;
             }
             $db_connection->close();
         }
-		return $lemon;
-	}
-    
-} 
+        return $lemon;
+    }
+
+}
 
 
 ?>
