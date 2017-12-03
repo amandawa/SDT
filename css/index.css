@@ -9,7 +9,14 @@ body {
 }
 
 .container {
-    width:20em; margin:0 auto;
+    width:20em;
+    margin:0 auto;
+}
+
+.reg_container {
+    width: 20em;
+    margin:0 auto;
+    padding-top: 5em;
 }
 
 .logo {
