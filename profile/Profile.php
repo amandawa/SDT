@@ -71,12 +71,43 @@
 <div class = "container-fluid">
 <div class="row">
   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id = "first_col">
-      <img class="img-circle" id = "profile_pic" src="./images/profilepic.png" height ='200' width ='200' alt="Profile Picture"/>
-      <br><br>
-      <hr align = "left" width = "80%" >
-      <h4>Contact Info:</h4>
-      <label>Email:</label><br><br>
-      <label>Phone Number:</label>
+      
+      
+
+
+      <?php
+        $host = "localhost";
+        $user = "dbuser";
+        $password = "goodbyeWorld";
+        $database = "applicationdb";
+        $table = "applicants";
+        //$db = connectToDB($host, $user, $password, $database);
+
+        //$sqlQuery = sprintf("select * from %s where email = '%s'", $table, trim($_POST['email']));
+        //$result = mysqli_query($db, $sqlQuery);
+
+        
+        //if ($result) {
+            //while ($recordArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                //get profile pic from database
+                print "<img class='img-circle' id = 'profile_pic' src='./images/profilepic.png' height ='200' width ='200' alt='Profile Picture'/>";
+                print "<br><br><hr align = 'left' width = '80%' >";
+                print "<h4>Contact Info:</h4>";
+                // print "<label>Email: </label> ".$recordArray['email']."<br><br>";
+                // print "<label>Phone Number: </label> ".$recordArray['phone']."<br><br>";
+                print "<label>Email: </label> <br><br>";
+                print "<label>Phone Number: </label> <br>";
+
+                 
+        //     }
+        //     mysqli_free_result($result);
+        // }  else {
+        //     echo "Retrieving records failed.".mysqli_error($db);
+        // }
+    
+        /* Closing */
+        // mysqli_close($db);
+      ?>
   </div>
 
 
