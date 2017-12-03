@@ -1,7 +1,7 @@
 <?php
 
 class fun_tuna{
-
+        
     // insert data into database, make sure $arr is in default order
     // if user didnt provide info, set corresponding value to null
     public function insert($arr){
@@ -9,7 +9,7 @@ class fun_tuna{
         $user = "dbuser";
         $password = "dating123";
         $database = "dating_website";
-        $tablename = "userinfo";
+        $tablename = "users";
         $signal = 5;
         $db_connection = new mysqli($host, $user, $password, $database);
         if($db_connection->connect_error){
@@ -33,7 +33,7 @@ class fun_tuna{
         $user = "dbuser";
         $password = "dating123";
         $database = "dating_website";
-        $tablename = "userinfo";
+        $tablename = "users";
         $signal = 5;
         $db_connection = new mysqli($host, $user, $password, $database);
         if($db_connection->connect_error){
@@ -58,7 +58,7 @@ class fun_tuna{
             }
             $tuna.=$temp;
         }
-        $query = "update $tablename set $tuna where uid=$id";
+        $query = "update $tablename set $tuna where UID=$id";
         $result = $db_connection->query($query);
         if(!$result){
             die("Insertion Error: ".$db_connection->error);
@@ -74,7 +74,7 @@ class fun_tuna{
         $user = "dbuser";
         $password = "dating123";
         $database = "dating_website";
-        $tablename = "userinfo";
+        $tablename = "users";
         $signal = 5;
         $db_connection = new mysqli($host, $user, $password, $database);
         if($db_connection->connect_error){
@@ -89,7 +89,7 @@ class fun_tuna{
         foreach($myarr as $key => $value){
             $count--;
             $temp = "";
-            if($key == "studentID"){
+            if($key == "UID"){
                 $id = $value;
                 continue;
             }
@@ -97,9 +97,9 @@ class fun_tuna{
             if($count >= 1){
                 $temp.="  AND ";
             }
-            $tuna.=$temp;
-        }
-        $query = "select studentID,image from $tablename where $tuna";
+            $tuna.=$temp;   
+        }   
+        $query = "select UID,Image from $tablename where $tuna";
         $result = $db_connection->query($query);
         if(!$result){
             die($db_connection->error);
@@ -107,46 +107,46 @@ class fun_tuna{
             $num_rows = $result->num_rows;
             if($num_rows !== 0){
                 for ($row_index = 0; $row_index < $num_rows; $row_index++) {
-                    $result->data_seek($row_index);
-                    $row = $result->fetch_array(MYSQLI_ASSOC);
-                    $lemon[$row['studentID']] = $row['image'];
-                }
+        			$result->data_seek($row_index);
+        			$row = $result->fetch_array(MYSQLI_ASSOC);
+                    $lemon[$row['UID']] = $row['Image']; 
+        		}
             }
             $db_connection->close();
         }
         return $lemon;
     }
-    // input is uid, and return the information of that uid (array)
-    // it will follow the table default pattern
-    public function getInfo($uid){
+	// input is uid, and return the information of that uid (array)
+	// it will follow the table default pattern
+	public function getInfo($uid){
         $host = "localhost";
         $user = "dbuser";
         $password = "dating123";
         $database = "dating_website";
-        $tablename = "userinfo";
+        $tablename = "users";
         $signal = 5;
         $db_connection = new mysqli($host, $user, $password, $database);
         if($db_connection->connect_error){
             die($db_connection->connect_error);
         }
-        $query = "select * from $tablename where studentID = $uid";
-        $result = $db_connection->query($query);
-        $lemon = array();
-        if(!$result){
+		$query = "select * from $tablename where UID = $uid";
+		$result = $db_connection->query($query);
+		$lemon = array();
+		if(!$result){
             die($db_connection->error);
         }else{
             $num_rows = $result->num_rows;
             if($num_rows !== 0){
-                $result->data_seek($num_rows);
-                $row = $result->fetch_array(MYSQLI_ASSOC);
-                $lemon = $row;
+        		$result->data_seek($num_rows);
+        		$row = $result->fetch_array(MYSQLI_ASSOC);
+				$lemon = $row;
             }
             $db_connection->close();
         }
-        return $lemon;
-    }
-
-}
+		return $lemon;
+	}
+    
+} 
 
 
 ?>
