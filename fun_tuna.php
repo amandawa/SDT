@@ -1,13 +1,13 @@
 <?php
 
 class fun_tuna{
-        
+
     // insert data into database, make sure $arr is in default order
     // if user didnt provide info, set corresponding value to null
     public function insert($arr){
         $host = "localhost";
         $user = "dbuser";
-        $password = "dating123";
+        $password = "";
         $database = "dating_website";
         $tablename = "users";
         $signal = 5;
@@ -68,11 +68,11 @@ class fun_tuna{
     }
     // search info, return a list of qualified UID and its Image Path, You can use
     // this image path to access file and open the image
-    // example input:  array(UID => 123, gender => "M")
+    // example input:  
     public function searchImage($arr){
         $host = "localhost";
         $user = "dbuser";
-        $password = "dating123";
+        $password = "";
         $database = "dating_website";
         $tablename = "users";
         $signal = 5;
@@ -85,20 +85,17 @@ class fun_tuna{
         $tuna = "";
         $lemon = array();
         $index = 0;
-        $count = count($arr);
+        $count = count($myarr);
         foreach($myarr as $key => $value){
             $count--;
             $temp = "";
-            if($key == "UID"){
-                $id = $value;
-                continue;
-            }
-            $temp = $temp.$key."=".$value;
+            $hi = $value;
+            $temp = $temp.$key." = \"".$value."\" ";
             if($count >= 1){
-                $temp.="  AND ";
+                $temp .= "  AND ";
             }
             $tuna.=$temp;   
-        }   
+        } 
         $query = "select UID,Image from $tablename where $tuna";
         $result = $db_connection->query($query);
         if(!$result){
@@ -121,7 +118,7 @@ class fun_tuna{
 	public function getInfo($uid){
         $host = "localhost";
         $user = "dbuser";
-        $password = "dating123";
+        $password = "";
         $database = "dating_website";
         $tablename = "users";
         $signal = 5;

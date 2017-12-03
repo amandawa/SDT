@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="profile.css" />
 </head>
 <body>
+    <?php
+        session_start();
+    ?>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">    
             <!-- Navigation Part 1-->
@@ -71,57 +74,40 @@
 <div class = "container-fluid">
 <div class="row">
   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id = "first_col">
-      
-      
-
 
       <?php
-        $host = "localhost";
-        $user = "dbuser";
-        $password = "goodbyeWorld";
-        $database = "applicationdb";
-        $table = "applicants";
-        //$db = connectToDB($host, $user, $password, $database);
-
-        //$sqlQuery = sprintf("select * from %s where email = '%s'", $table, trim($_POST['email']));
-        //$result = mysqli_query($db, $sqlQuery);
-
-        
-        //if ($result) {
-            //while ($recordArray = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+        require_once("../fun_tuna.php");
+        $tuna = new fun_tuna();
+        $my_info = $tuna->getInfo(113977367);
+        $_SESSION['my_uid'] = '113977367';
                 //get profile pic from database
                 print "<img class='img-circle' id = 'profile_pic' src='./images/profilepic.png' height ='200' width ='200' alt='Profile Picture'/>";
                 print "<br><br><hr align = 'left' width = '80%' >";
                 print "<h4>Contact Info:</h4>";
-                // print "<label>Email: </label> ".$recordArray['email']."<br><br>";
-                // print "<label>Phone Number: </label> ".$recordArray['phone']."<br><br>";
-                print "<label>Email: </label> <br><br>";
-                print "<label>Phone Number: </label> <br>";
-
-                 
-        //     }
-        //     mysqli_free_result($result);
-        // }  else {
-        //     echo "Retrieving records failed.".mysqli_error($db);
-        // }
-    
-        /* Closing */
-        // mysqli_close($db);
+                print "<label>Email: </label> ".$my_info['Email']."<br><br>";
+                print "<label>Phone Number: </label> ".$my_info['Phone']."<br><br>";
       ?>
   </div>
 
 
   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id = "second_col">
-    <h2>Amanda Wang</h2>
-    <hr>
-    <h4>Basic Info:</h4>
-    <label>UID:</label><br><br>
-    <label>Age:</label><br><br>
-    <label>Gender:</label><br><br>
-    <label>Major:</label><br><br>
-    <label>Birthday:</label><br><br>
-    <label>Ethnicity:</label><br><br>
-    <label>Interests:</label><br><br>
+
+    <?php
+        require_once("../fun_tuna.php");
+        $tuna = new fun_tuna();
+        $my_info = $tuna->getInfo(113977367);
+
+                //get profile pic from database
+                print "<h2>".$my_info['FirstName'].$my_info['LastName']."</h2>";
+                print "<hr>";
+                print "<h4>Basic Info:</h4>";
+                print "<label>UID: </label> ".$my_info['Email']."<br><br>";
+                print "<label>Age: </label> ".$my_info['Age']."<br><br>";
+                print "<label>Gender: </label> ".$my_info['Gender']."<br><br>";
+                print "<label>Major: </label> ".$my_info['Major']."<br><br>";
+                print "<label>Birthday: </label> ".$my_info['Birthday']."<br><br>";
+                print "<label>Ethnicity: </label> ".$my_info['Ethnicity']."<br><br>";
+      ?>
 
   </div>
 </div>

@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="match.css" />
 </head>
 <body>
+    <?php
+    session_start();
+    ?>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">    
             <!-- Navigation Part 1-->
@@ -72,26 +75,67 @@
 <input type="text" name="search" placeholder="Search.."><br><br>
     <div class="row display-flex">
 
-        <div class="col-sm-5 col-md-3">
-            <div class="thumbnail">
-                <img class = "img-circle" src="rick.png"  alt="Profile Picture">
-                    <div class="caption">
-                        <h3>Rick Sanchez</h3>
-                        <span><strong id = "good">99% match</strong></span>
-                        <p>  
-                            <label>Age: </label> 60<br>
-                            <label>Major: </label> Biophysics <br>
-                            <label>Interests:</label>
-                            <pre>
+    <?php
+        require_once("../fun_tuna.php");
+        $tuna = new fun_tuna();
+        //$my_uid = $_SESSION['my_uid'];
+        $my_uid = $_SESSION['my_uid'];
+        
+
+        $pref = Array();
+        $pref['q1'] = $_SESSION['q1'];
+        $pref['q2'] = $_SESSION['q2'];
+        $pref['q3'] = $_SESSION['q3'];
+        $my_pref = serialize($pref);
+        $arr = $tuna->searchImage($my_pref);
+        //print_r ($arr);
+        foreach($arr as $key => $entry){
+            $temp = $tuna->getInfo($key);
+            print_r($temp);
+
+        }
+
+        function generatePic($arr) {
+            $firstName = $arr['FirstName'];
+            $lastName = $arr['LastName'];
+            $age = $arr['Age'];
+            $major = $arr['Major'];
+$bodyy =<<< EOBODY
+<div class="col-sm-5 col-md-3">
+<div class="thumbnail">
+    <img class = "img-circle" src="rick.png"  alt="Profile Picture">
+        <div class="caption">
+            <h3>$firstName $lastname</h3>
+            <span><strong id = "good">99% match</strong></span>
+            <p>  
+                <label>Age: </label> $age<br>
+                <label>Major: </label> $major <br>
+                <label>Interests:</label>
+                <pre>
 - Turning into a pickle
 - Drinking
 - Space travel
-                            </pre>
-                        </p>
-                    <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Message</a></p>
-                </div>
-            </div>
-        </div>
+                </pre>
+            </p>
+        <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Message</a></p>
+    </div>
+</div>
+</div>
+EOBODY;
+            return $bodyy;
+        }
+        //$my_info = $tuna->getInfo(113977367);
+        //$_SESSION['my_uid'] = 113977367;
+    ?>
+
+
+
+       
+
+
+
+
+
 
         <div class="col-sm-5 col-md-3">
             <div class="thumbnail">

@@ -152,7 +152,7 @@
 
     function myFunction() {
         showPage();
-        setTimeout(goToMatch, 4000);
+        setTimeout(goToMatch, 2000);
     }
 
     function goToMatch() {

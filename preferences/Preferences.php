@@ -20,6 +20,9 @@
 
 </head>
 <body>
+    <?php
+     session_start();
+    ?>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">    
             <!-- Navigation Part 1-->
@@ -68,15 +71,35 @@
     <h1>Preferences</h1>
 </div>
 
+        <?php
+            
+            
+            if(isset($_POST["submit"])){    
+                $pref = Array();
+                $pref['q1'] = $_POST['q1'];
+                $pref['q2'] = $_POST['q2'];
+                $pref['q3'] = $_POST['q3'];
+                print_r($pref);
+                $inpuut = serialize($pref);
+                   
+                $my_uid = $_SESSION['my_uid'];
+                $_SESSION['q1'] = $pref['q1'];
+                $_SESSION['q2'] = $pref['q2'];
+                $_SESSION['q3'] = $pref['q3'];
+                
+                
+            }
+        ?>
 
+<form action = "" method = "POST">
 <div class="container">
     <form>
         <ol>
             <li>
             <div class="form-group">
                 <label for="q1">Gender preference: </label><br>
-                <input type = "radio" name = "q1" value = "any"> Any
-                <input type = "radio" name = "q1" value = "male"> Male
+                <input type = "radio" name = "q1" value = "any" > Any
+                <input type = "radio" name = "q1" value = "male" checked> Male
                 <input type = "radio" name = "q1" value = "female"> Female
             </div>
             </li>
@@ -84,7 +107,7 @@
             <li>
             <div class="form-group">
                 <label for="q2">What is your religion?</label><br>
-                <input type = "radio" name = "q2" value = "none"> None<br>
+                <input type = "radio" name = "q2" value = "none" checked> None<br>
                 <input type = "radio" name = "q2" value = "christian"> Christian<br>
                 <input type = "radio" name = "q2" value = "jewish"> Jewish<br>
                 <input type = "radio" name = "q2" value = "muslim"> Muslim<br>
@@ -97,7 +120,7 @@
             <li>
             <div class="form-group">
                 <label for="q3">Are you a dog or cat person?</label><br>
-                <input type = "radio" name = "q3" value = "dog"> Dog<br>
+                <input type = "radio" name = "q3" value = "dog" checked> Dog<br>
                 <input type = "radio" name = "q3" value = "cat"> Cat<br>
                 <input type = "radio" name = "q3" value = "both"> Both<br>
                 <input type = "radio" name = "q3" value = "neither"> Neither<br>
@@ -177,10 +200,10 @@
 
         </ol>
 
-   
-    
+
+        
         <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"  
+        <input type="submit" name = "submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"  
             style="width:70%;
                 height: 40px;
                 position:fixed;
@@ -188,8 +211,10 @@
                 text-align:center;
                 left: 15%;
                 font-size:16pt;
-            ">Save Preferences</button>
-      
+            "></input>
+        </form>
+        
+        
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
           <div class="modal-dialog">
@@ -210,17 +235,9 @@
             
           </div>
         </div>
-        <!-- <div class="button-group" id = "buttonContainer">
-            <input type="submit" class="btn btn-info" value="Save Preferences" 
-            style="width:70%;
-                height: 40px;
-                position:fixed;
-                bottom:0px;
-                text-align:center;
-                left: 15%;
-                font-size:16pt;
-            ">
-        </div> -->
+        <?php
+        
+        ?>
     </form>
 </div>
 <br><br><br>
