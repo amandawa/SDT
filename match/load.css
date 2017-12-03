@@ -41,3 +41,15 @@ button {
     padding: 30px 50px;
     /* border: 2px solid black; */
 }
+
+#turtle{
+    vertical-align:middle;
+    text-align:center;
+    z-index: 1;
+    opacity: 1;
+    position: absolute;
+    top: 47%;
+    left: 39%;
+    height: 130px;
+    width: 270px;
+}
