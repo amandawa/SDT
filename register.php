@@ -32,7 +32,7 @@ if (isset($_POST['submitReg'])) {
             $arr = array($ss.$login_nm.$ss, $ss.$login_passwd.$ss, $ss.$_POST["firstname"].$ss, $ss.$_POST["lastname"].$ss,
                 $ss.$_POST["email"].$ss, $ss.$login_nm.$ss, $ss.$_POST["phone"].$ss, $ss."null".$ss, $ss.$_POST["gender"].$ss, $ss.$_POST["major"].$ss,
                 $ss.$_POST["birthday"].$ss, $ss.$_POST["ethnicity"].$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss,
-                $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss);
+                $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss );
             $input = serialize($arr);
             $user->insert($input);
             header('location:preferences/Preferences.php');

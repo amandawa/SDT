@@ -116,6 +116,8 @@
             $temp = $tuna->getInfo($my_uid);
             
             $uid = $my_uid;
+            $firstName = $temp['FirstName'];
+            $lastName = $temp['LastName'];
             $email = $temp['Email'];
             $phone = $temp['Phone'];
             $password = $temp['Password'];
@@ -147,7 +149,7 @@
 
 
             <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" id = "second_col">
-                <h2>Amanda Wang</h2>
+                <h2><?php echo $firstName; ?> <?php echo $lastName; ?></h2>
                 <hr>
                 <h4>Basic Info:</h4>
                 

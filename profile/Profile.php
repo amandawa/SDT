@@ -99,7 +99,7 @@
         require_once("../fun_tuna.php");
         $tuna = new fun_tuna();
         $my_info = $tuna->getInfo($_SESSION['usr']);
-        $my_uid = $_SESSION['my_uid'];
+        $my_uid = $_SESSION['usr'];
         $filename = "../img/".$my_uid.".png";
         $_SESSION['my_uid'] = $_SESSION['usr'];
                 //get profile pic from database
