@@ -99,9 +99,11 @@
         require_once("../fun_tuna.php");
         $tuna = new fun_tuna();
         $my_info = $tuna->getInfo($_SESSION['usr']);
+        $my_uid = $_SESSION['my_uid'];
+        $filename = "../img/".$my_uid.".png";
         $_SESSION['my_uid'] = $_SESSION['usr'];
                 //get profile pic from database
-                print "<img class='img-circle' id = 'profile_pic' src='./images/profilepic.png' height ='200' width ='200' alt='Profile Picture'/>";
+                print "<img class='img-circle' id = 'profile_pic' src='$filename' height ='200' width ='200' alt='Profile Picture'/>";
                 print "<br><br><hr align = 'left' width = '80%' >";
                 print "<h4>Contact Info:</h4>";
                 print "<label>Email: </label> ".$my_info['Email']."<br><br>";
@@ -121,7 +123,7 @@
                 print "<h2>".$my_info['FirstName']." ".$my_info['LastName']."</h2>";
                 print "<hr>";
                 print "<h4>Basic Info:</h4>";
-                print "<label>UID: </label> ".$my_info['Email']."<br><br>";
+                print "<label>UID: </label> ".$my_info['UID']."<br><br>";
                 print "<label>Age: </label> ".$my_info['Age']."<br><br>";
                 print "<label>Gender: </label> ".$my_info['Gender']."<br><br>";
                 print "<label>Major: </label> ".$my_info['Major']."<br><br>";

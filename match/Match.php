@@ -83,17 +83,20 @@
         
 
         $pref = Array();
-        $pref['q1'] = $_SESSION['q1'];
+        $pref['q4'] = $_SESSION['q4'];
         $pref['q2'] = $_SESSION['q2'];
         $pref['q3'] = $_SESSION['q3'];
         $my_pref = serialize($pref);
         //returns qualified candidates
         $arr = $tuna->searchImage($my_pref);
-        //print_r ($arr);
+        
         foreach($arr as $key => $entry){
-            $temp = $tuna->getInfo($key);
-            echo generatePic($temp);
-
+            if($my_uid == $key){
+                continue;
+            }else{
+                $temp = $tuna->getInfo($key);
+                echo generatePic($temp);
+            }
         }
 
         

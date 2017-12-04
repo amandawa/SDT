@@ -79,8 +79,19 @@
                 $pref['q1'] = $_POST['q1'];
                 $pref['q2'] = $_POST['q2'];
                 $pref['q3'] = $_POST['q3'];
+                $pref['q4'] = $_POST['q4'];
+                $pref['q5'] = $_POST['q5'];
+                $pref['q6'] = $_POST['q6'];
+                $pref['q7'] = $_POST['q7'];
+                $pref['q8'] = $_POST['q8'];
+                $pref['q9'] = $_POST['q9'];
+                $pref['q10'] = $_POST['q10'];
+                $search['q1'] = $pref['q1'];
+                $search['q2'] = $pref['q2'];
+                $search['q3'] = $pref['q3'];
+                
                 //print_r($pref);
-                $inpuut = serialize($pref);
+                $inpuut = serialize($search);
                 $my_uid = $_SESSION['my_uid'];
                 $_SESSION['q1'] = $pref['q1'];
                 $_SESSION['q2'] = $pref['q2'];
@@ -109,7 +120,7 @@
                 $q10 = $ss.$_POST['q10'].$ss;
                 
                 
-                $input_array = array("UID" => $ss.$my_uid.$ss,"q1" => $q1, "q2" => $q2, "q3" => $q3, "q4" => $q4,
+                $input_array = array("UID" => $my_uid,"q1" => $q1, "q2" => $q2, "q3" => $q3, "q4" => $q4,
                 "q5" => $q5, "q6" => $q6, "q7" => $q7, "q8" => $q8, "q9" => $q9, "q10" => $q10);
                 //print_r($input_array);
                 $minecraft = serialize($input_array);
@@ -126,8 +137,8 @@
             <li>
             <div class="form-group">
                 <label for="q1">Gender preference: </label><br>
-                <input type = "radio" name = "q1" value = "Any" > Any
-                <input type = "radio" name = "q1" value = "Male" checked> Male
+                <input type = "radio" name = "q1" value = "Any" checked> Any
+                <input type = "radio" name = "q1" value = "Male"> Male
                 <input type = "radio" name = "q1" value = "Female"> Female
             </div>
             </li>
@@ -158,7 +169,7 @@
             <li>
             <div class="form-group">
                 <label for="q4">Which travel experience sounds the best to you?</label><br>
-                    <input type="radio" name="q4" value="Hiking"> Hiking and ziplining through the wilderness<br>
+                    <input type="radio" name="q4" value="Hiking" checked> Hiking and ziplining through the wilderness<br>
                     <img src="./images/zipline.png" width = '350' height = '200'><br><br>
                     <input type="radio" name="q4" value="Beach"> Staying in an overwater bungalow<br>
                     <img src="./images/bungalow.png" width = '350' height = '200'><br><br>
@@ -172,7 +183,7 @@
             <li>
             <div class="form-group">
                 <label for="q5">Are you a morning or night person?</label><br>
-                <input type = "radio" name = "q5" value = "Morning"> Morning<br>
+                <input type = "radio" name = "q5" value = "Morning" checked> Morning<br>
                 <input type = "radio" name = "q5" value = "Night"> Night<br>
             </div>
             </li>
@@ -180,7 +191,7 @@
             <li>
             <div class="form-group">
                 <label for="q6">What do you like to do on the weekends?</label><br>
-                <input type="radio" name="q6" value="Sleep"> Sleep all day<br>
+                <input type="radio" name="q6" value="Sleep" checked> Sleep all day<br>
                 <input type="radio" name="q6" value="Party"> Party like an animal!!<br>
                 <input type="radio" name="q6" value="OutdoorActivities"> Outdoor activities<br>
                 <input type="radio" name="q6" value="VideoGames"> Play video games<br>
@@ -190,7 +201,7 @@
             <li>
             <div class="form-group">
                 <label for="q7">Favorite Season?</label><br>
-                <input type="radio" name="q7" value="Summer"> Summer<br>
+                <input type="radio" name="q7" value="Summer" checked> Summer<br>
                 <input type="radio" name="q7" value="Fall"> Fall<br>
                 <input type="radio" name="q7" value="Winter"> Winter<br>
                 <input type="radio" name="q7" value="Spring"> Spring<br>
@@ -200,7 +211,7 @@
             <li>
             <div class="form-group">
                 <label for="q8">Favorite Sport to watch on TV?</label><br>
-                <input type="radio" name="q8" value="Soccer"> Soccer<br>
+                <input type="radio" name="q8" value="Soccer" checked> Soccer<br>
                 <input type="radio" name="q8" value="Football"> Football<br>
                 <input type="radio" name="q8" value="Basketball"> Basketball<br>
                 <input type="radio" name="q8" value="Hockey"> Hockey<br>
@@ -210,7 +221,7 @@
             <li>
             <div class="form-group">
                 <label for="q9">Choose a super power:</label><br>
-                <input type="radio" name="q9" value="Invisibility"> Invisibility<br>
+                <input type="radio" name="q9" value="Invisibility" checked> Invisibility<br>
                 <input type="radio" name="q9" value="MindReading"> Mind Reading<br>
                 <input type="radio" name="q9" value="TimeTravel"> Time Travel<br>
                 <input type="radio" name="q9" value="Immortality"> Immortality<br>
@@ -220,7 +231,7 @@
             <li>
             <div class="form-group">
                 <label for="q10">Do you like the outdoors?</label><br>
-                <input type="radio" name="q10" value="Yes"> Yes<br>
+                <input type="radio" name="q10" value="Yes" checked> Yes<br>
                 <input type="radio" name="q10" value="Sometimes"> Sometimes<br>
                 <input type="radio" name="q10" value="No"> No<br>
             </div>

@@ -25,17 +25,17 @@ if (isset($_POST['submitReg'])) {
     } else {
         $user = new fun_tuna();
         $info = $user->getInfo($login_nm);
-        header('location:preferences/Preferences.php');
         if (count($info) === 0) {
             $ss = "\"";
             $_SESSION["usr"] = $login_nm;
             $_SESSION["pwd"] = $login_passwd;
             $arr = array($ss.$login_nm.$ss, $ss.$login_passwd.$ss, $ss.$_POST["firstname"].$ss, $ss.$_POST["lastname"].$ss,
-                $ss.$_POST["email"].$ss, $ss."null".$ss, $ss.$_POST["phone"].$ss, $ss."null".$ss, $ss.$_POST["gender"].$ss, $ss.$_POST["major"].$ss,
+                $ss.$_POST["email"].$ss, $ss.$login_nm.$ss, $ss.$_POST["phone"].$ss, $ss."null".$ss, $ss.$_POST["gender"].$ss, $ss.$_POST["major"].$ss,
                 $ss.$_POST["birthday"].$ss, $ss.$_POST["ethnicity"].$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss,
-                $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss);
+                $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss);
             $input = serialize($arr);
             $user->insert($input);
+            header('location:preferences/Preferences.php');
         } else {
             $msg .= "<label style='color: red;'>Account Already Exists</label><br>";
         }
