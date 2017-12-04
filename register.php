@@ -50,7 +50,7 @@ $body = <<<EOBODY
         </div>
         <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" name="pwd" id="pwd" required>
+            <input type="password" class="form-control" name="pwd" id="pwd" required placeholder="*****">
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
@@ -59,6 +59,29 @@ $body = <<<EOBODY
         <div class="form-group">
             <label>Phone Number:</label>
             <input type="text" class="form-control" name="phone" id="phone" placeholder="XXX-XXX-XXXX" >
+        </div>
+        <div class="form-group">
+            <label for="pwd">First Name:</label>
+            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="John">
+        </div>
+        <div class="form-group">
+            <label for="email">Last Name:</label>
+            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Smith">
+        </div>
+        <div class="form-group">
+            <label>Gender:</label>
+            <input type="text" class="form-control" name="gender" id="gender" placeholder="M/F" >
+        <div class="form-group">
+            <label>Major:</label>
+            <input type="text" class="form-control" name="major" id="major" placeholder="CS">
+        </div>
+        <div class="form-group">
+            <label>Birthday:</label>
+            <input type="text" class="form-control" name="birthday" id="birthday" placeholder="i.e. 01/01/2017">
+        </div>
+        <div class="form-group">
+            <label>Ethnicity:</label>
+            <input type="text" class="form-control" name="ethnicity" id="ethnicity" placeholder="i.e. Asian">
         </div>
         <br>
         <button type="submit" name="submitReg" class="btn btn-default">Submit</button>
