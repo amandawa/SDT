@@ -5,10 +5,10 @@ require_once('fun_tuna.php');
 session_start();
 $msg = "";
 
-if (isset($_GET['submitReg'])) {
+if (isset($_POST['submitReg'])) {
 
-    $login_nm = $_GET["usr"];
-    $login_passwd = $_GET["pwd"];
+    $login_nm = $_POST["usr"];
+    $login_passwd = $_POST["pwd"];
 
     /* Establish a connection to the LDAP server */
     $ldapconn=ldap_connect("ldap://ldap.umd.edu/",389) or die('Could not connect<br>');
@@ -25,13 +25,17 @@ if (isset($_GET['submitReg'])) {
     } else {
         $user = new fun_tuna();
         $info = $user->getInfo($login_nm);
-
+        header('location:preferences/Preferences.php');
         if (count($info) === 0) {
+            $ss = "\"";
             $_SESSION["usr"] = $login_nm;
             $_SESSION["pwd"] = $login_passwd;
-            $_SESSION["email"] = $_GET["email"];
-            $_SESSION["phone"] = $_GET["phone"];
-            header('location:preferences/Preferences.php');
+            $arr = array($ss.$login_nm.$ss, $ss.$login_passwd.$ss, $ss.$_POST["firstname"].$ss, $ss.$_POST["lastname"].$ss,
+                $ss.$_POST["email"].$ss, $ss."null".$ss, $ss.$_POST["phone"].$ss, $ss."null".$ss, $ss.$_POST["gender"].$ss, $ss.$_POST["major"].$ss,
+                $ss.$_POST["birthday"].$ss, $ss.$_POST["ethnicity"].$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss,
+                $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss);
+            $input = serialize($arr);
+            $user->insert($input);
         } else {
             $msg .= "<label style='color: red;'>Account Already Exists</label><br>";
         }
@@ -42,7 +46,7 @@ if (isset($_GET['submitReg'])) {
 
 }
 $body = <<<EOBODY
-    <form action="{$_SERVER['PHP_SELF']}" method="get">
+    <form action="{$_SERVER['PHP_SELF']}" method="post">
         <h2>Sign Up Now !</h2><br>
         <div class="form-group">
             <label for="usr">UMD Directory ID:</label>
@@ -84,7 +88,7 @@ $body = <<<EOBODY
             <input type="text" class="form-control" name="ethnicity" id="ethnicity" placeholder="i.e. Asian">
         </div>
         <br>
-        <button type="submit" name="submitReg" class="btn btn-default">Submit</button>
+        <input type="submit" name="submitReg" class="btn btn-default" value="Submit">
         <br><br>
     </form>
 

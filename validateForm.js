@@ -33,9 +33,9 @@ function validateForm() {
 
     if(phone.length !== 12 ||
         isDigit(phone.substring(0,3)) === false ||
-        phoneNum.substring(3,4) !== '-' ||
+        phone.substring(3,4) !== '-' ||
         isDigit(phone.substring(4,7)) === false ||
-        phoneNum.substring(7,8) !== '-' ||
+        phone.substring(7,8) !== '-' ||
         isDigit(phone.substring(8,12)) === false) {
         invalidMessages += "Invalid Phone Number XXX-XXX-XXXX\n";
     }
