@@ -122,11 +122,12 @@ class fun_tuna{
         $database = "dating_website";
         $tablename = "users";
         $signal = 5;
+
         $db_connection = new mysqli($host, $user, $password, $database);
         if($db_connection->connect_error){
             die($db_connection->connect_error);
         }
-		$query = "select * from $tablename where UID = $uid";
+        $query = sprintf("select * from %s where UID = '%s'", $tablename, $uid);
 		$result = $db_connection->query($query);
 		$lemon = array();
 		if(!$result){
@@ -142,7 +143,6 @@ class fun_tuna{
         }
 		return $lemon;
 	}
-    
 } 
 
 
