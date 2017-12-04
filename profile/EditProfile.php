@@ -106,6 +106,25 @@
         <h1>Edit My Profile</h1>
     </div>
 
+    <?php
+        require_once("../fun_tuna.php");
+        session_start();
+            $tuna = new fun_tuna();
+            //$my_uid = $_SESSION['my_uid'];
+            $my_uid = $_SESSION['my_uid'];
+            
+            $temp = $tuna->getInfo($my_uid);
+            
+            $uid = $my_uid;
+            $email = $temp['Email'];
+            $phone = $temp['Phone'];
+            $password = $temp['Password'];
+            $age = $temp['Age'];
+            $major = $temp['Major'];
+            $ethnicity = $temp['Ethnicity'];
+
+    ?>
+
     <div class = "container-fluid">
         <div class="row">
             <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id = "first_col">
@@ -116,12 +135,13 @@
                     <input id = "submit" type="submit" value="Upload Image" name="submit">
                 </form>
                 <hr align = "left" width = "80%" >
+                <form action = "Profile.php" method = "post">
                 <h4>Contact Info:</h4>
                 <label for ="email">Email:</label>
-                <input type="email" class="form-control" id="email">
+                <input type="email" class="form-control" name = "email" id="email" value = "<?php echo $email; ?>">
                 <br><br>
                 <label>Phone Number:</label>
-                <input type = "text" class="form-control" id="phonenum">
+                <input type = "text" class="form-control" name = "phone" id="phonenum" value = "<?php echo $phone;?>">
     
             </div>
 
@@ -130,35 +150,26 @@
                 <h2>Amanda Wang</h2>
                 <hr>
                 <h4>Basic Info:</h4>
-                <form action = "Profile.php" method = "post">
+                
                     <div class="form-group">
                         <label for="uid">UID:</label>
-                        <input type="text" class="form-control" id="uid">
+                        <input type="text" name = "uid" class="form-control" id="uid" value = "<?php echo $uid; ?>">
                     </div>
                     <div class="form-group">
                         <label for="pwd">Password:</label>
-                        <input type="password" class="form-control" id="pwd">
+                        <input type="password" name = "pass" class="form-control" id="pwd" value = "******">
                     </div>
                     <div class="form-group">
                         <label for="age">Age:</label>
-                        <input type="number" class="form-control" id="age">
-                    </div>
-                    <div class="form-group">
-                        <label for="gender">Gender:</label>
-                        <input type="radio" name="gender" value="Male" /> Male&nbsp;
-				        <input type="radio" name="gender" value="Female" /> Female
+                        <input type="text" class="form-control" name = "age" id="age" value = "<?php echo $age; ?>">
                     </div>
                     <div class="form-group">
                         <label for="major">Major:</label>
-                        <input type="text" class="form-control" id="major">
-                    </div>
-                    <div class="form-group">
-                        <label for="birth">Birthday:</label>
-                        <input type="date" class="form-control" id="birth">
+                        <input type="text" class="form-control" name = "major" id="major" value = "<?php echo $major; ?>">
                     </div>
                     <div class="form-group">
                         <label for="ethnicity">Ethnicity:</label>
-                        <input type="text" class="form-control" id="ethnicity">
+                        <input type="text" class="form-control" name = "ethnicity" id="ethnicity" value = "<?php echo $ethnicity; ?>">
                     </div>
                     <div class="form-group">
                         <fieldset>
@@ -168,7 +179,7 @@
                     </div>
                     <br><br><br><br>
                     <div class="button-group" id = "buttonContainer">
-                        <input type="submit" id = "save"class="btn btn-info" value="Save Profile Changes" 
+                        <input type="submit" name="submit" id = "save"class="btn btn-info" value="Save Profile Changes" 
                             style="width:70%;
                             height: 40px;
                             position:fixed;

@@ -102,12 +102,35 @@
             $lastName = $arr['LastName'];
             $age = $arr['Age'];
             $major = $arr['Major'];
-            $percent = rand(79,100);
-            $path = "../img/".$arr['Image'].".png";
-            foreach($arr as $key => $value){
-                
+            $percent = rand(10,100);
+            if($percent < 50) {
+                $color = "bad";
+            } else {
+                $color = "good";
             }
+            $path = "../img/".$arr['Image'].".png";
             
+            $question = array("q1"=>"Gender Preference: ",
+            "q2"=>"Religion Preference: ",
+            "q3"=>"Pet Preference: ",
+            "q4"=>"Travel Preference: ",
+            "q5"=>"Sleep Preference: ",
+            "q6"=>"Weekend Activities Preference: ",
+            "q7"=>"Season Preference: ",
+            "q8"=>"Sports Preference: ",
+            "q9"=>"Imaganary Preference: ",
+            "q10"=>"Outdoors Preference: ");
+            $interest = "";
+            foreach($arr as $key => $value){
+                if($key{0} == 'q' && $question[$key] !== null){
+                    $bucky = $question[$key];
+                    $interest.=$bucky;
+                    $interest.=$value;
+                    $interest.="<br>";
+                }
+            }
+
+    
 
 $bodyy =<<< EOBODY
 <div class="col-sm-5 col-md-3">
@@ -115,16 +138,16 @@ $bodyy =<<< EOBODY
     <img class = "img-circle" src="$path"  alt="Profile Picture">
         <div class="caption">
             <h3>$firstName $lastName</h3>
-            <span><strong id = "good">$percent% match</strong></span>
+            <span><strong id = $color>$percent% match</strong></span>
             <p>  
                 <label>Age: </label> $age<br>
                 <label>Major: </label> $major <br>
                 <label>Interests:</label>
                 <pre>
-- N/A
+$interest
                 </pre>
             </p>
-        <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Message</a></p>
+        
     </div>
 </div>
 </div>

@@ -71,6 +71,54 @@
     <h1>My Profile</h1>
 </div>
 
+        <?php
+	        // $host = "localhost";
+	        // $user = "dbuser";
+	        // $password = "";
+	        // $database = "dating_website";
+	        // $table = "users";
+
+            // if(isset($_POST['submit'])){
+            // $db = connectToDB($host, $user, $password, $database);
+	        // $sqlQuery = sprintf("update %s set Email = '%s', Phone = %s, Age = '%s', Major = '%s', Ethnicity = '%s' where UID = '%s' ", $table, trim($_POST['email']), trim($_POST['phone']), trim($_POST['age']), $_POST['major'], $_POST['ethnicity'], $_POST['uid']);
+            // mysqli_query($db, $sqlQuery);
+
+            require_once("../fun_tuna.php");
+            if(isset($_POST['submit'])){
+            $tuna = new fun_tuna();
+            $ss = "\"";
+            $e = $_POST['email'];
+            $email = $ss.$e.$ss;
+            $phone = $ss.$_POST['phone'].$ss;
+            $age = $ss.$_POST['age'].$ss;
+            $major = $ss.$_POST['major'].$ss;
+            $ethnicity = $ss.$_POST['ethnicity'].$ss;
+
+            $input_array = array("UID" => $_POST['uid'],"Email" => $email, "Phone" => $phone, "Age" => $age, "Major" => $major, "Ethnicity" => $ethnicity );
+            //print_r($input_array);
+            $minecraft = serialize($input_array);
+            $tuna->update($minecraft);
+            }
+        //     if($_POST['pass'] != '******'){ //password was changed
+        //         $sqlQuery = sprintf("update %s set password = '%s' where UID = '%s'", $table, $_POST['pass'], trim($_POST['UID']));
+        //         mysqli_query($db, $sqlQuery);
+        //     }
+		
+	    //     /* Closing */
+	    //     mysqli_close($db);
+	
+
+        //     function connectToDB($host, $user, $password, $database) {
+	    //         $db = mysqli_connect($host, $user, $password, $database);
+	    //         if (mysqli_connect_errno()) {
+		//             echo "Connect failed.\n".mysqli_connect_error();
+		//             exit();
+	    //         }
+	    //         return $db;
+        //     }
+        // }
+        ?>
+
 <div class = "container-fluid">
 <div class="row">
   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" id = "first_col">
@@ -78,8 +126,8 @@
       <?php
         require_once("../fun_tuna.php");
         $tuna = new fun_tuna();
-        $my_info = $tuna->getInfo(113977367);
-        $_SESSION['my_uid'] = '113977367';
+        $my_info = $tuna->getInfo($_SESSION['usr']);
+        $_SESSION['my_uid'] = $_SESSION['usr'];
                 //get profile pic from database
                 print "<img class='img-circle' id = 'profile_pic' src='./images/profilepic.png' height ='200' width ='200' alt='Profile Picture'/>";
                 print "<br><br><hr align = 'left' width = '80%' >";
@@ -95,10 +143,10 @@
     <?php
         require_once("../fun_tuna.php");
         $tuna = new fun_tuna();
-        $my_info = $tuna->getInfo(113977367);
+        $my_info = $tuna->getInfo($_SESSION['my_uid']);
 
                 //get profile pic from database
-                print "<h2>".$my_info['FirstName'].$my_info['LastName']."</h2>";
+                print "<h2>".$my_info['FirstName']." ".$my_info['LastName']."</h2>";
                 print "<hr>";
                 print "<h4>Basic Info:</h4>";
                 print "<label>UID: </label> ".$my_info['Email']."<br><br>";

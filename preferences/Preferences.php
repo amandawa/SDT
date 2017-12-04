@@ -79,7 +79,7 @@
                 $pref['q1'] = $_POST['q1'];
                 $pref['q2'] = $_POST['q2'];
                 $pref['q3'] = $_POST['q3'];
-                print_r($pref);
+                //print_r($pref);
                 $inpuut = serialize($pref);
                    
                 $my_uid = $_SESSION['my_uid'];
@@ -91,9 +91,9 @@
             }
         ?>
 
-<form action = "" method = "POST">
+
 <div class="container">
-    <form>
+    <form action = "" method = "post">
         <ol>
             <li>
             <div class="form-group">
@@ -203,7 +203,7 @@
 
         
         <!-- Trigger the modal with a button -->
-        <input type="submit" name = "submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"  
+        <input type="submit" value = "Save Preferences" name = "submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"  
             style="width:70%;
                 height: 40px;
                 position:fixed;
@@ -212,7 +212,7 @@
                 left: 15%;
                 font-size:16pt;
             "></input>
-        </form>
+       
         
         
         <!-- Modal -->
@@ -235,9 +235,6 @@
             
           </div>
         </div>
-        <?php
-        
-        ?>
     </form>
 </div>
 <br><br><br>
