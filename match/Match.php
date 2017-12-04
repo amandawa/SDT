@@ -102,7 +102,12 @@
             $lastName = $arr['LastName'];
             $age = $arr['Age'];
             $major = $arr['Major'];
-            $percent = rand(79,100);
+            $percent = rand(10,100);
+            if($percent < 50) {
+                $color = "bad";
+            } else {
+                $color = "good";
+            }
             $path = "../img/".$arr['Image'].".png";
             
             $question = array("q1"=>"Gender Preference: ",
@@ -133,7 +138,7 @@ $bodyy =<<< EOBODY
     <img class = "img-circle" src="$path"  alt="Profile Picture">
         <div class="caption">
             <h3>$firstName $lastName</h3>
-            <span><strong id = "good">$percent% match</strong></span>
+            <span><strong id = $color>$percent% match</strong></span>
             <p>  
                 <label>Age: </label> $age<br>
                 <label>Major: </label> $major <br>
@@ -142,7 +147,7 @@ $bodyy =<<< EOBODY
 $interest
                 </pre>
             </p>
-        <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Message</a></p>
+        
     </div>
 </div>
 </div>
