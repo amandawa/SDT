@@ -104,10 +104,28 @@
             $major = $arr['Major'];
             $percent = rand(79,100);
             $path = "../img/".$arr['Image'].".png";
-            foreach($arr as $key => $value){
-                
-            }
             
+            $question = array("q1"=>"Gender Preference: ",
+            "q2"=>"Religion Preference: ",
+            "q3"=>"Pet Preference: ",
+            "q4"=>"Travel Preference: ",
+            "q5"=>"Sleep Preference: ",
+            "q6"=>"Weekend Activities Preference: ",
+            "q7"=>"Season Preference: ",
+            "q8"=>"Sports Preference: ",
+            "q9"=>"Imaganary Preference: ",
+            "q10"=>"Outdoors Preference: ");
+            $interest = "";
+            foreach($arr as $key => $value){
+                if($key{0} == 'q' && $question[$key] !== null){
+                    $bucky = $question[$key];
+                    $interest.=$bucky;
+                    $interest.=$value;
+                    $interest.="<br>";
+                }
+            }
+
+    
 
 $bodyy =<<< EOBODY
 <div class="col-sm-5 col-md-3">
@@ -121,7 +139,7 @@ $bodyy =<<< EOBODY
                 <label>Major: </label> $major <br>
                 <label>Interests:</label>
                 <pre>
-- N/A
+$interest
                 </pre>
             </p>
         <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Message</a></p>
