@@ -25,7 +25,7 @@ if (isset($_POST['submitReg'])) {
     } else {
         $user = new fun_tuna();
         $info = $user->getInfo($login_nm);
-        header('location:preferences/Preferences.php');
+
         if (count($info) === 0) {
             $ss = "\"";
             $_SESSION["usr"] = $login_nm;
@@ -36,9 +36,11 @@ if (isset($_POST['submitReg'])) {
                 $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss, $ss."null".$ss);
             $input = serialize($arr);
             $user->insert($input);
+            header('location:preferences/Preferences.php');
         } else {
             $msg .= "<label style='color: red;'>Account Already Exists</label><br>";
         }
+
 
     }
     // Release connection
@@ -54,38 +56,38 @@ $body = <<<EOBODY
         </div>
         <div class="form-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control" name="pwd" id="pwd" required placeholder="*****">
+            <input type="password" class="form-control" name="pwd" id="pwd" placeholder="*****" required>
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="text" class="form-control" name="email" id="email" placeholder="umd@connect.com" >
+            <input type="text" class="form-control" name="email" id="email" placeholder="umd@connect.com" required>
         </div>
         <div class="form-group">
             <label>Phone Number:</label>
-            <input type="text" class="form-control" name="phone" id="phone" placeholder="XXX-XXX-XXXX" >
+            <input type="text" class="form-control" name="phone" id="phone" placeholder="XXX-XXX-XXXX" required>
         </div>
         <div class="form-group">
             <label for="pwd">First Name:</label>
-            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="John">
+            <input type="text" class="form-control" name="firstname" id="firstname" placeholder="John" required>
         </div>
         <div class="form-group">
             <label for="email">Last Name:</label>
-            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Smith">
+            <input type="text" class="form-control" name="lastname" id="lastname" placeholder="Smith" required>
         </div>
         <div class="form-group">
             <label>Gender:</label>
-            <input type="text" class="form-control" name="gender" id="gender" placeholder="M/F" >
+            <input type="text" class="form-control" name="gender" id="gender" placeholder="M/F" required>
         <div class="form-group">
             <label>Major:</label>
-            <input type="text" class="form-control" name="major" id="major" placeholder="CS">
+            <input type="text" class="form-control" name="major" id="major" placeholder="CS" required>
         </div>
         <div class="form-group">
             <label>Birthday:</label>
-            <input type="text" class="form-control" name="birthday" id="birthday" placeholder="i.e. 01/01/2017">
+            <input type="text" class="form-control" name="birthday" id="birthday" placeholder="i.e. 01/01/2017" required>
         </div>
         <div class="form-group">
             <label>Ethnicity:</label>
-            <input type="text" class="form-control" name="ethnicity" id="ethnicity" placeholder="i.e. Asian">
+            <input type="text" class="form-control" name="ethnicity" id="ethnicity" placeholder="i.e. Asian" required>
         </div>
         <br>
         <input type="submit" name="submitReg" class="btn btn-default" value="Submit">

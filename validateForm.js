@@ -7,38 +7,46 @@ window.onsubmit=validateForm;
 /* If false the data will not be sent to the server */
 function validateForm() {
     /* Retrieving the values */
-
-    var phone = document.getElementById("phone").value;
-    var firstname = document.getElementById("firstname").value;
-    var lastname = document.getElementById("lastname").value;
+    //alert("Congrats");
+    let phone = document.getElementById("phone").value;
+    //let firstname = document.getElementById("firstname").value;
+    //let lastname = document.getElementById("lastname").value;
 
     /* Validating values */
-    var invalidMessages = "";
+    let invalidMessages = "";
+    //
+    //
+    // /*check lastName*/
+    // if(isAllLetters(firstname) !== true) {
+    //     alert("firstname all letters");
+    //     invalidMessages += "Invalid Last Name\n";
+    // }
 
-
-    /*check lastName*/
-    if(isAllLetters(firstname) !== true) {
-        invalidMessages += "Invalid Last Name\n";
-    }
-
-    /*check firstName*/
-    if(isAllLetters(lastname) !== true) {
-        invalidMessages += "Invalid First Name\n";
-    }
-
-    /*check phone number
-        we will make the user put the dashes for their phone number themselves
-        input "301-555-5555", if they put any other input, it will be invalid,
-        XXX-XXX-XXXX */
-
-    if(phone.length !== 12 ||
-        isDigit(phone.substring(0,3)) === false ||
-        phone.substring(3,4) !== '-' ||
-        isDigit(phone.substring(4,7)) === false ||
-        phone.substring(7,8) !== '-' ||
-        isDigit(phone.substring(8,12)) === false) {
+    // /*check firstName*/
+    // if(isAllLetters(lastname) !== true) {
+    //     invalidMessages += "Invalid First Name\n";
+    // }
+    //
+    // /*check phone number
+    //     we will make the user put the dashes for their phone number themselves
+    //     input "301-555-5555", if they put any other input, it will be invalid,
+    //     XXX-XXX-XXXX */
+    //
+    // alert(phone.substring(0,3));
+    // alert(phone.substring(3,4));
+    // alert(phone.substring(4,7));
+    // alert(phone.substring(7,8));
+    // alert(phone.substring(8,12));
+    if(phone.length !== 10 || isNaN(phone)) {
         invalidMessages += "Invalid Phone Number XXX-XXX-XXXX\n";
     }
+       /* isDigit(phone.substring(0,3)) === false ||
+        phone.substring(3,4) !== "-" ||
+        isDigit(phone.substring(4,7)) === false ||
+        phone.substring(7,8) !== "-" ||
+        isDigit(phone.substring(8,12)) === false) {*/
+
+
 
     /*if any incorrect input*/
     if (invalidMessages !== "") {
