@@ -5,32 +5,24 @@ window.onsubmit=validateForm;
 /* This function must return true or false */
 /* If true the data will be sent to the server */
 /* If false the data will not be sent to the server */
-function validateForm(arr) {
+function validateForm() {
     /* Retrieving the values */
 
-
-    /* these array indexes can change if we decide on a different array arrangement*/
-    var studentID = arr[0].trim();
-    var lastName = arr[1].trim();
-    var firstName = arr[2].trim();
-    var phoneNum = arr[6].trim();
-
+    var phone = document.getElementById("phone").value;
+    var firstname = document.getElementById("firstname").value;
+    var lastname = document.getElementById("lastname").value;
 
     /* Validating values */
     var invalidMessages = "";
 
-    /*check studentID*/
-    if(studentID.length !== 9 || isDigit(studentID) === false) {
-        invalidMessages += "Invalid Student ID\n";
-    }
 
     /*check lastName*/
-    if(isAllLetters(lastName) !== true) {
+    if(isAllLetters(firstname) !== true) {
         invalidMessages += "Invalid Last Name\n";
     }
 
     /*check firstName*/
-    if(isAllLetters(firstName) !== true) {
+    if(isAllLetters(lastname) !== true) {
         invalidMessages += "Invalid First Name\n";
     }
 
@@ -39,12 +31,12 @@ function validateForm(arr) {
         input "301-555-5555", if they put any other input, it will be invalid,
         XXX-XXX-XXXX */
 
-    if(phoneNum.length !== 12 ||
-        isDigit(phoneNum.substring(0,3)) === false ||
-        phoneNum.substring(3,4) !== '-' ||
-        isDigit(phoneNum.substring(4,7)) === false ||
-        phoneNum.substring(7,8) !== '-' ||
-        isDigit(phoneNum.substring(8,12)) === false) {
+    if(phone.length !== 12 ||
+        isDigit(phone.substring(0,3)) === false ||
+        phone.substring(3,4) !== '-' ||
+        isDigit(phone.substring(4,7)) === false ||
+        phone.substring(7,8) !== '-' ||
+        isDigit(phone.substring(8,12)) === false) {
         invalidMessages += "Invalid Phone Number XXX-XXX-XXXX\n";
     }
 
@@ -75,7 +67,3 @@ function isAllLetters(value) {
     }
 }
 
-/*not sure when to call this, call before inserting array into database*/
-function insertQuotes(value) {
-    return "\"" + value + "\"";
-}
