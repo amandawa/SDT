@@ -91,30 +91,37 @@
         //print_r ($arr);
         foreach($arr as $key => $entry){
             $temp = $tuna->getInfo($key);
-            print_r($temp);
+            echo generatePic($temp);
 
         }
+
+        
 
         function generatePic($arr) {
             $firstName = $arr['FirstName'];
             $lastName = $arr['LastName'];
             $age = $arr['Age'];
             $major = $arr['Major'];
+            $percent = rand(79,100);
+            $path = "../img/".$arr['Image'].".png";
+            foreach($arr as $key => $value){
+                
+            }
+            
+
 $bodyy =<<< EOBODY
 <div class="col-sm-5 col-md-3">
 <div class="thumbnail">
-    <img class = "img-circle" src="rick.png"  alt="Profile Picture">
+    <img class = "img-circle" src="$path"  alt="Profile Picture">
         <div class="caption">
-            <h3>$firstName $lastname</h3>
-            <span><strong id = "good">99% match</strong></span>
+            <h3>$firstName $lastName</h3>
+            <span><strong id = "good">$percent% match</strong></span>
             <p>  
                 <label>Age: </label> $age<br>
                 <label>Major: </label> $major <br>
                 <label>Interests:</label>
                 <pre>
-- Turning into a pickle
-- Drinking
-- Space travel
+- N/A
                 </pre>
             </p>
         <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Message</a></p>
@@ -126,40 +133,9 @@ EOBODY;
         }
         //$my_info = $tuna->getInfo(113977367);
         //$_SESSION['my_uid'] = 113977367;
+
+      
     ?>
-
-
-
-       
-
-
-
-
-
-
-        <div class="col-sm-5 col-md-3">
-            <div class="thumbnail">
-                <img class = "img-circle" src="morty.png"  alt="Profile Picture">
-                    <div class="caption">
-                        <h3>Morty Smith</h3>
-                        <span><strong id = "bad">9% match</strong></span>
-                        <p>
-                            <label>Age: </label> 14<br>
-                            <label>Major: </label> Communications <br>
-                            <label>Interests:</label>
-                            <pre>
-- Going on adventures
-- Hanging with my grandpa
-                            </pre>
-                        </p>
-                    <p><a href="#" class="btn btn-primary" role="button">View Profile</a> <a href="#" class="btn btn-default" role="button">Message</a></p>
-                </div>
-            </div>
-        </div>
-
-
-    </div>
-</div>
 
 </body>
 </html>
