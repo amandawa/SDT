@@ -81,12 +81,40 @@
                 $pref['q3'] = $_POST['q3'];
                 //print_r($pref);
                 $inpuut = serialize($pref);
-                   
                 $my_uid = $_SESSION['my_uid'];
                 $_SESSION['q1'] = $pref['q1'];
                 $_SESSION['q2'] = $pref['q2'];
                 $_SESSION['q3'] = $pref['q3'];
+                $_SESSION['q4'] = $pref['q4'];
+                $_SESSION['q5'] = $pref['q5'];
+                $_SESSION['q6'] = $pref['q6'];
+                $_SESSION['q7'] = $pref['q7'];
+                $_SESSION['q8'] = $pref['q8'];
+                $_SESSION['q9'] = $pref['q9'];
+                $_SESSION['q10'] = $pref['q10'];
                 
+                require_once("../fun_tuna.php");
+                
+                $tuna = new fun_tuna();
+                $ss = "\"";
+                $q1 = $ss.$_POST['q1'].$ss;
+                $q2 = $ss.$_POST['q2'].$ss;
+                $q3 = $ss.$_POST['q3'].$ss;
+                $q4 = $ss.$_POST['q4'].$ss;
+                $q5 = $ss.$_POST['q5'].$ss;
+                $q6 = $ss.$_POST['q6'].$ss;
+                $q7 = $ss.$_POST['q7'].$ss;
+                $q8 = $ss.$_POST['q8'].$ss;
+                $q9 = $ss.$_POST['q9'].$ss;
+                $q10 = $ss.$_POST['q10'].$ss;
+                
+                
+                $input_array = array("UID" => $ss.$my_uid.$ss,"q1" => $q1, "q2" => $q2, "q3" => $q3, "q4" => $q4,
+                "q5" => $q5, "q6" => $q6, "q7" => $q7, "q8" => $q8, "q9" => $q9, "q10" => $q10);
+                //print_r($input_array);
+                $minecraft = serialize($input_array);
+                $tuna->update($minecraft);
+
                 
             }
         ?>
@@ -98,45 +126,45 @@
             <li>
             <div class="form-group">
                 <label for="q1">Gender preference: </label><br>
-                <input type = "radio" name = "q1" value = "any" > Any
-                <input type = "radio" name = "q1" value = "male" checked> Male
-                <input type = "radio" name = "q1" value = "female"> Female
+                <input type = "radio" name = "q1" value = "Any" > Any
+                <input type = "radio" name = "q1" value = "Male" checked> Male
+                <input type = "radio" name = "q1" value = "Female"> Female
             </div>
             </li>
 
             <li>
             <div class="form-group">
                 <label for="q2">What is your religion?</label><br>
-                <input type = "radio" name = "q2" value = "none" checked> None<br>
-                <input type = "radio" name = "q2" value = "christian"> Christian<br>
-                <input type = "radio" name = "q2" value = "jewish"> Jewish<br>
-                <input type = "radio" name = "q2" value = "muslim"> Muslim<br>
-                <input type = "radio" name = "q2" value = "hindu"> Hindu<br>
-                <input type = "radio" name = "q2" value = "buddhist"> Buddhist<br>
-                <input type = "radio" name = "q2" value = "other"> Other<br>
+                <input type = "radio" name = "q2" value = "None" checked> None<br>
+                <input type = "radio" name = "q2" value = "Christian"> Christian<br>
+                <input type = "radio" name = "q2" value = "Jewish"> Jewish<br>
+                <input type = "radio" name = "q2" value = "Muslim"> Muslim<br>
+                <input type = "radio" name = "q2" value = "Hindu"> Hindu<br>
+                <input type = "radio" name = "q2" value = "Buddhist"> Buddhist<br>
+                <input type = "radio" name = "q2" value = "Other"> Other<br>
             </div>
             </li>
            
             <li>
             <div class="form-group">
                 <label for="q3">Are you a dog or cat person?</label><br>
-                <input type = "radio" name = "q3" value = "dog" checked> Dog<br>
-                <input type = "radio" name = "q3" value = "cat"> Cat<br>
-                <input type = "radio" name = "q3" value = "both"> Both<br>
-                <input type = "radio" name = "q3" value = "neither"> Neither<br>
+                <input type = "radio" name = "q3" value = "Dogs" checked> Dog<br>
+                <input type = "radio" name = "q3" value = "Cats"> Cat<br>
+                <input type = "radio" name = "q3" value = "Both"> Both<br>
+                <input type = "radio" name = "q3" value = "Neither"> Neither<br>
             </div>
             </li>
 
             <li>
             <div class="form-group">
                 <label for="q4">Which travel experience sounds the best to you?</label><br>
-                    <input type="radio" name="q4" value="hike"> Hiking and ziplining through the wilderness<br>
+                    <input type="radio" name="q4" value="Hiking"> Hiking and ziplining through the wilderness<br>
                     <img src="./images/zipline.png" width = '350' height = '200'><br><br>
-                    <input type="radio" name="q4" value="bungalow"> Staying in an overwater bungalow<br>
+                    <input type="radio" name="q4" value="Beach"> Staying in an overwater bungalow<br>
                     <img src="./images/bungalow.png" width = '350' height = '200'><br><br>
-                    <input type="radio" name="q4" value="europe"> Backpacking across Europe<br>
+                    <input type="radio" name="q4" value="Europe"> Backpacking across Europe<br>
                     <img src="./images/europe.png" width = '350' height = '200'><br><br>
-                    <input type="radio" name="q4" value="northern"> Sleeping under the Northern Lights<br>
+                    <input type="radio" name="q4" value="Snow"> Sleeping under the Northern Lights<br>
                     <img src="./images/igloo.png" width = '350' height = '200'><br>
             </div>
             </li>
@@ -144,57 +172,57 @@
             <li>
             <div class="form-group">
                 <label for="q5">Are you a morning or night person?</label><br>
-                <input type = "radio" name = "q5" value = "morning"> Morning<br>
-                <input type = "radio" name = "q5" value = "night"> Night<br>
+                <input type = "radio" name = "q5" value = "Morning"> Morning<br>
+                <input type = "radio" name = "q5" value = "Night"> Night<br>
             </div>
             </li>
 
             <li>
             <div class="form-group">
                 <label for="q6">What do you like to do on the weekends?</label><br>
-                <input type="radio" name="q6" value="sleep"> Sleep all day<br>
-                <input type="radio" name="q6" value="party"> Party like an animal!!<br>
-                <input type="radio" name="q6" value="outdoor"> Outdoor activities<br>
-                <input type="radio" name="q6" value="videogames"> Play video games<br>
+                <input type="radio" name="q6" value="Sleep"> Sleep all day<br>
+                <input type="radio" name="q6" value="Party"> Party like an animal!!<br>
+                <input type="radio" name="q6" value="OutdoorActivities"> Outdoor activities<br>
+                <input type="radio" name="q6" value="VideoGames"> Play video games<br>
             </div>
             </li>
 
             <li>
             <div class="form-group">
                 <label for="q7">Favorite Season?</label><br>
-                <input type="radio" name="q7" value="summer"> Summer<br>
-                <input type="radio" name="q7" value="fall"> Fall<br>
-                <input type="radio" name="q7" value="winter"> Winter<br>
-                <input type="radio" name="q7" value="spring"> Spring<br>
+                <input type="radio" name="q7" value="Summer"> Summer<br>
+                <input type="radio" name="q7" value="Fall"> Fall<br>
+                <input type="radio" name="q7" value="Winter"> Winter<br>
+                <input type="radio" name="q7" value="Spring"> Spring<br>
             </div>
             </li>
 
             <li>
             <div class="form-group">
                 <label for="q8">Favorite Sport to watch on TV?</label><br>
-                <input type="radio" name="q8" value="soccer"> Soccer<br>
-                <input type="radio" name="q8" value="football"> Football<br>
-                <input type="radio" name="q8" value="basketball"> Basketball<br>
-                <input type="radio" name="q8" value="hockey"> Hockey<br>
+                <input type="radio" name="q8" value="Soccer"> Soccer<br>
+                <input type="radio" name="q8" value="Football"> Football<br>
+                <input type="radio" name="q8" value="Basketball"> Basketball<br>
+                <input type="radio" name="q8" value="Hockey"> Hockey<br>
             </div>
             </li>
 
             <li>
             <div class="form-group">
                 <label for="q9">Choose a super power:</label><br>
-                <input type="radio" name="q9" value="invisibility"> Invisibility<br>
-                <input type="radio" name="q9" value="mindreading"> Mind Reading<br>
-                <input type="radio" name="q9" value="timetravel"> Time Travel<br>
-                <input type="radio" name="q9" value="immortality"> Immortality<br>
+                <input type="radio" name="q9" value="Invisibility"> Invisibility<br>
+                <input type="radio" name="q9" value="MindReading"> Mind Reading<br>
+                <input type="radio" name="q9" value="TimeTravel"> Time Travel<br>
+                <input type="radio" name="q9" value="Immortality"> Immortality<br>
             </div>
             </li>
 
             <li>
             <div class="form-group">
                 <label for="q10">Do you like the outdoors?</label><br>
-                <input type="radio" name="q10" value="yes"> Yes<br>
-                <input type="radio" name="q10" value="sometimes"> Sometimes<br>
-                <input type="radio" name="q10" value="no"> No<br>
+                <input type="radio" name="q10" value="Yes"> Yes<br>
+                <input type="radio" name="q10" value="Sometimes"> Sometimes<br>
+                <input type="radio" name="q10" value="No"> No<br>
             </div>
             </li>
 

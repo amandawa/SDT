@@ -78,7 +78,7 @@
     <?php
         require_once("../fun_tuna.php");
         $tuna = new fun_tuna();
-        //$my_uid = $_SESSION['my_uid'];
+
         $my_uid = $_SESSION['my_uid'];
         
 
@@ -87,6 +87,7 @@
         $pref['q2'] = $_SESSION['q2'];
         $pref['q3'] = $_SESSION['q3'];
         $my_pref = serialize($pref);
+        //returns qualified candidates
         $arr = $tuna->searchImage($my_pref);
         //print_r ($arr);
         foreach($arr as $key => $entry){
@@ -102,8 +103,10 @@
             $lastName = $arr['LastName'];
             $age = $arr['Age'];
             $major = $arr['Major'];
-            $percent = rand(10,100);
-            if($percent < 50) {
+            $percent = rand(50,100);
+            $email = $arr['Email'];
+            $phone = $arr['Phone'];
+            if($percent < 60) {
                 $color = "bad";
             } else {
                 $color = "good";
@@ -112,14 +115,14 @@
             
             $question = array("q1"=>"Gender Preference: ",
             "q2"=>"Religion Preference: ",
-            "q3"=>"Pet Preference: ",
-            "q4"=>"Travel Preference: ",
-            "q5"=>"Sleep Preference: ",
-            "q6"=>"Weekend Activities Preference: ",
-            "q7"=>"Season Preference: ",
-            "q8"=>"Sports Preference: ",
-            "q9"=>"Imaganary Preference: ",
-            "q10"=>"Outdoors Preference: ");
+            "q3"=>"Dogs or Cats: ",
+            "q7"=>"Favorite Season: ",
+            "q8"=>"Favorite Sport: ",
+            "q4"=>"Dream Vacation: ",
+            "q5"=>"Morning or Night: ",
+            "q6"=>"Weekend Activities: ",
+            "q9"=>"Super Power: ",
+            "q10"=>"Do you like the outdoors?: ");
             $interest = "";
             foreach($arr as $key => $value){
                 if($key{0} == 'q' && $question[$key] !== null){
@@ -133,7 +136,7 @@
     
 
 $bodyy =<<< EOBODY
-<div class="col-sm-5 col-md-3">
+<div class="col-sm-5 col-md-4">
 <div class="thumbnail">
     <img class = "img-circle" src="$path"  alt="Profile Picture">
         <div class="caption">
@@ -142,6 +145,8 @@ $bodyy =<<< EOBODY
             <p>  
                 <label>Age: </label> $age<br>
                 <label>Major: </label> $major <br>
+                <label>Email: </label> $email <br>
+                <label>Phone: </label> $phone <br>
                 <label>Interests:</label>
                 <pre>
 $interest

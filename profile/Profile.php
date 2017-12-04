@@ -72,17 +72,6 @@
 </div>
 
         <?php
-	        // $host = "localhost";
-	        // $user = "dbuser";
-	        // $password = "";
-	        // $database = "dating_website";
-	        // $table = "users";
-
-            // if(isset($_POST['submit'])){
-            // $db = connectToDB($host, $user, $password, $database);
-	        // $sqlQuery = sprintf("update %s set Email = '%s', Phone = %s, Age = '%s', Major = '%s', Ethnicity = '%s' where UID = '%s' ", $table, trim($_POST['email']), trim($_POST['phone']), trim($_POST['age']), $_POST['major'], $_POST['ethnicity'], $_POST['uid']);
-            // mysqli_query($db, $sqlQuery);
-
             require_once("../fun_tuna.php");
             if(isset($_POST['submit'])){
             $tuna = new fun_tuna();
@@ -99,24 +88,7 @@
             $minecraft = serialize($input_array);
             $tuna->update($minecraft);
             }
-        //     if($_POST['pass'] != '******'){ //password was changed
-        //         $sqlQuery = sprintf("update %s set password = '%s' where UID = '%s'", $table, $_POST['pass'], trim($_POST['UID']));
-        //         mysqli_query($db, $sqlQuery);
-        //     }
-		
-	    //     /* Closing */
-	    //     mysqli_close($db);
-	
 
-        //     function connectToDB($host, $user, $password, $database) {
-	    //         $db = mysqli_connect($host, $user, $password, $database);
-	    //         if (mysqli_connect_errno()) {
-		//             echo "Connect failed.\n".mysqli_connect_error();
-		//             exit();
-	    //         }
-	    //         return $db;
-        //     }
-        // }
         ?>
 
 <div class = "container-fluid">

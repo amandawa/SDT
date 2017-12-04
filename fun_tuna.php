@@ -31,7 +31,7 @@ class fun_tuna{
     public function update($arr){
         $host = "localhost";
         $user = "dbuser";
-        $password = "dating123";
+        $password = "";
         $database = "dating_website";
         $tablename = "users";
         $signal = 5;
@@ -43,11 +43,13 @@ class fun_tuna{
         $tuna = "";
         $lemon = 5;
         $id = "";
-        $count = count($arr);
-        foreach($arr as $key => $value){
+        $count = count($myarr);
+        
+        foreach($myarr as $key => $value){
             $count--;
             $temp = "";
             if($lemon == 5){
+            
                 $lemon = 4;
                 $id = $value;
                 continue;
@@ -58,7 +60,8 @@ class fun_tuna{
             }
             $tuna.=$temp;
         }
-        $query = "update $tablename set $tuna where UID=$id";
+        
+        $query = "update $tablename set $tuna where UID=\"$id\"";
         $result = $db_connection->query($query);
         if(!$result){
             die("Insertion Error: ".$db_connection->error);
@@ -104,45 +107,45 @@ class fun_tuna{
             $num_rows = $result->num_rows;
             if($num_rows !== 0){
                 for ($row_index = 0; $row_index < $num_rows; $row_index++) {
-        			$result->data_seek($row_index);
-        			$row = $result->fetch_array(MYSQLI_ASSOC);
+                    $result->data_seek($row_index);
+                    $row = $result->fetch_array(MYSQLI_ASSOC);
                     $lemon[$row['UID']] = $row['Image']; 
-        		}
+        }
             }
             $db_connection->close();
         }
         return $lemon;
     }
-	// input is uid, and return the information of that uid (array)
-	// it will follow the table default pattern
-	public function getInfo($uid){
+// input is uid, and return the information of that uid (array)
+// it will follow the table default pattern
+public function getInfo($uid){
         $host = "localhost";
         $user = "dbuser";
         $password = "";
         $database = "dating_website";
         $tablename = "users";
         $signal = 5;
-
         $db_connection = new mysqli($host, $user, $password, $database);
         if($db_connection->connect_error){
             die($db_connection->connect_error);
         }
-        $query = sprintf("select * from %s where UID = '%s'", $tablename, $uid);
-		$result = $db_connection->query($query);
-		$lemon = array();
-		if(!$result){
+        $query = "select * from $tablename where UID = \"$uid\"";
+        $result = $db_connection->query($query);
+        $lemon = array();
+        if(!$result){
             die($db_connection->error);
         }else{
             $num_rows = $result->num_rows;
             if($num_rows !== 0){
-        		$result->data_seek($num_rows);
-        		$row = $result->fetch_array(MYSQLI_ASSOC);
-				$lemon = $row;
+                $result->data_seek($num_rows);
+                $row = $result->fetch_array(MYSQLI_ASSOC);
+                $lemon = $row;
             }
             $db_connection->close();
         }
-		return $lemon;
-	}
+return $lemon;
+}
+    
 } 
 
 
