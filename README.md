@@ -1,6 +1,7 @@
 # SDT
 Single Dog Terminator - Social website for people in need
- Setup Env if needed (OSX):                                       
+
+Setup Env if needed (OSX):                                       
  1: Check which php path:                                         
     $root: which php                                              
  2: Check if path = /usr/bin/php, change your OSX php path:       

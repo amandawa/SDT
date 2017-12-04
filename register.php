@@ -1,10 +1,12 @@
 <?php
 error_reporting(E_ERROR);
 require_once('support.php');
+require_once('fun_tuna.php');
 session_start();
 $msg = "";
 
 if (isset($_GET['submitReg'])) {
+
     $login_nm = $_GET["usr"];
     $login_passwd = $_GET["pwd"];
 
@@ -19,20 +21,29 @@ if (isset($_GET['submitReg'])) {
     /* Returns 1 on Success */
     if ($verify_user != 1) {
         /* Failed */
-        $msg .= "<br><label style='color: red;'>Invalid Directory ID/Password</label>";
+        $msg .= "<label style='color: red;'>Invalid Directory ID/Password</label><br>";
     } else {
-        $_SESSION["usr"] = $login_nm;
-        $_SESSION["pwd"] = $login_passwd;
-        $_SESSION["email"] = $_GET["email"];
-        $_SESSION["phone"] = $_GET["phone"];
-        header('location:preferences/Preferences.php');
+        $user = new fun_tuna();
+        $info = $user->getInfo($login_nm);
+
+        if (count($info) === 0) {
+            $_SESSION["usr"] = $login_nm;
+            $_SESSION["pwd"] = $login_passwd;
+            $_SESSION["email"] = $_GET["email"];
+            $_SESSION["phone"] = $_GET["phone"];
+            header('location:preferences/Preferences.php');
+        } else {
+            $msg .= "<label style='color: red;'>Account Already Exists</label><br>";
+        }
+
     }
     // Release connection
     ldap_unbind($ldapconn);
+
 }
 $body = <<<EOBODY
     <form action="{$_SERVER['PHP_SELF']}" method="get">
-        <h2>Sign Up !</h2><br>
+        <h2>Sign Up Now !</h2><br>
         <div class="form-group">
             <label for="usr">UMD Directory ID:</label>
             <input type="text" class="form-control" name="usr" id="usr" placeholder="i.e. lemondog123" required>
@@ -43,16 +54,18 @@ $body = <<<EOBODY
         </div>
         <div class="form-group">
             <label for="email">Email:</label>
-            <input type="text" class="form-control" name="email" id="email" placeholder="umd@connect.com" required>
+            <input type="text" class="form-control" name="email" id="email" placeholder="umd@connect.com" >
         </div>
         <div class="form-group">
             <label>Phone Number:</label>
-            <input type="text" class="form-control" name="phone" id="phone" placeholder="XXX-XXX-XXXX" required>
+            <input type="text" class="form-control" name="phone" id="phone" placeholder="XXX-XXX-XXXX" >
         </div>
         <br>
         <button type="submit" name="submitReg" class="btn btn-default">Submit</button>
+        <br><br>
     </form>
+
 EOBODY;
-$page = $body.$msg;
+    $page = $body.$msg;
     echo generatePage($page, "New User");
 ?>
